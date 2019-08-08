@@ -2,65 +2,47 @@
 //  lotto.cpp
 //  
 //
-//  Created by 문상혁 on 07/08/2019.
+//  Created by 문상혁 on 08/08/2019.
 //
 
 #include <stdio.h>
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-// graph making fuction
+vector<vector<int> > S;
 
-
-void visit(vector<int> arr, int index, int cnt, string result, int size);
-
-void visit(vector<int> arr, int index, int cnt, string result, int size) {
-    //cout << "index : " << index << " " << "cnt : " << cnt << endl;
-    if(index > size-1) {
-        return;
+void visit(vector<int> arr, int index, string s, int cnt) {
+    if(cnt == 6) { cout << s << endl; return; }
+    string result = s;
+    result = result.append(to_string(arr[index])); result.append(" ");
+    //cout << result << " // cnt : " << cnt << endl;
+    if(index < arr.size()) {
+        visit(arr, index+1, result, cnt+1);
+        //cout << " ------------------ " << endl;
+        visit(arr, index+1, s, cnt);
     }
-    string sol = result;
-    if(cnt == 6) {
-        sol = sol.append(to_string(arr[index]));
-        sol = sol.append(" ");
-        cout << sol << endl;
-        return;
-    }
-    if(arr[index] != 0) {
-        sol = sol.append(to_string(arr[index]));
-        sol = sol.append(" ");
-    }
-    //이거 다시보자
-    visit(arr, index+1, cnt+1, sol, size);
-    //이거
-    visit(arr, index+1, cnt, result, size);
+}
+void visit(int i) {
+    visit(S[i],0,"",0);
 }
 
 int main() {
-    int K; int a; int iter_series = 0; string s = "";
-    cin >> K;
-    vector<vector<int> > series;
-    int temp[13] = {0};
-    while(!(K==0)) {
-        vector<int> S; S.push_back(0);
-        for(int i=0; i<K; i++) {
-            cin >> a;
-            S.push_back(a);
-            if(i+1==K) {K = 0; series.push_back(S); iter_series++;}
+    int k; cin >> k;
+    int input;
+    // input vector
+    while(!(k==0)) {
+        vector<int> temp;
+        for(int i=0; i<k; i++) {
+            cin >> input; temp.push_back(input);
         }
-        cin >> K;
-        S.clear();
+        S.push_back(vector<int>(temp));
+        temp.clear(); cin >> k;
     }
     
-    for(int i=0; i<iter_series; i++) {
-        visit(series[i], 0, 0, s, series[i].size());
-        cout << endl;
+    for(int i=0; i<S.size(); i++) {
+        visit(i); cout << endl;
     }
-    
 }
-
-
-// 8 다음 34로 안감 왜안가냐
