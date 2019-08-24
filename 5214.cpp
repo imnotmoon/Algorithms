@@ -54,8 +54,6 @@ public:
             }
             q.pop();
         }
-
-        
         return cnt[N];
     }
 };
@@ -67,7 +65,6 @@ int main() {
             cin >> arr[j][i];
         }
     }
-    
     Station s;
     cout << s.bfs() << endl;
 }
