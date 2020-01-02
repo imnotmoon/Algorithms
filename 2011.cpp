@@ -8,10 +8,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#i
 
 
 using namespace std;
-char S[5000] = {""};  // input value
+char S[5000] = {""};
 int dp[100000] = {0};
 int size=0;
 
@@ -29,18 +30,7 @@ int makeNumber(int front, int end) {
 }
 
 int countSet(int front, int end) {
-    /*
-    cout << endl;
-    cout << "reculsive starts" << endl;
-    cout << "front : end   " << front << " " << end << endl;
-    for(int i=0; i<25114; i++) {
-        if(dp[i] != 0) {
-            cout << "i = " << i << "    val : " << dp[i] << endl;
-        }
-    }
-    // 이미 갯수를 파악한 수의 경우 그 갯수를 반환
-    cout << "looking : " << makeNumber(front, end) << endl;
-    */
+
     if(dp[makeNumber(front, end)] != 0) return dp[makeNumber(front, end)];
     // 숫자 하나일 경우
     if(makeNumber(front,end) == 10 || makeNumber(front,end) == 20) return 1;
@@ -59,7 +49,6 @@ int countSet(int front, int end) {
             dp[makeNumber(front, end)] = 1; return 1;
         }
     }
-    // 25114
     
     int cnt = 0;
     if(size > 2) {
