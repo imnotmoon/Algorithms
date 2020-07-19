@@ -11,9 +11,11 @@ int main() {
 
     // Selection Sort //
     for(int i=0; i<len; i++) {
-        for(int j=i; j<len; j++) {
-            if(v[i] > v[j]) { int t = v[i]; v[i] = v[j]; v[j] = t; }    // swap
+        int min = i;
+        for(int j=i+1; j<len; j++) {
+            if(v[min] > v[j]) { min = j; }
         }
+        int tmp = v[i]; v[i] = v[min]; v[min] = tmp; 
     }
     cout << endl;
     for(int i=0; i<len; i++) {
