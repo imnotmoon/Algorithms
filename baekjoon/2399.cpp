@@ -5,6 +5,7 @@ using namespace std;
 long long v[10000] = {0};
 int n = 0;
 
+// Bubble Sort
 void sort_list() {
     for(int i=0; i<n; i++) {
         for(int j=0; j<n-i-1; j++) {
