@@ -4,7 +4,7 @@
 using namespace std;
 
 int number = 10;
-int data[10] = {1, 20, 5, 8, 7, 6, 4, 3, 2, 9};
+int data[10] = {10, 9, 6, 7, 6, 6, 4, 6, 9, 1};
 
 void quickSort(int *data, int start, int end) {
     if(start >= end) {
