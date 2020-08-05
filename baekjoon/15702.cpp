@@ -8,26 +8,27 @@
 using namespace std;
 
 int N, M;   // N : 문제 갯수    // M : 응시자 수
-vector<int> q;
-vector<int> totalOfAll;
+vector<int> q;  // 배점
+vector<int> totalOfAll; // 총점을 담는 벡터
+vector<Tester> v;   // 입력
 
 class Tester {
 public:
     int testNumber;
-    vector<char> ox;
+    vector<char> ox;    // 맞은거 틀린거 O / X로 받는 배열
 
     Tester(int testNumber, vector<char> ox) {
-        this->testNumber = testNumber;
+        this->testNumber = testNumber;  // 문제번호
         this->ox = ox;
     }
 
+    // 비교연산자
     bool operator <(const Tester &tester)const {
         return this->testNumber < tester.testNumber;
     }
 };
 
-vector<Tester> v;
-
+// 점수계산해서 1등이 누군지 리턴하는 함수
 int calcScoreAndFindFirst() {
     for(int i=0; i<M; i++) {
         int total = 0;

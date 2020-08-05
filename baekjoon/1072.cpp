@@ -1,43 +1,44 @@
-//
-//  1072.cpp
-//  
-//
-//  Created by 문상혁 on 15/08/2019.
-//
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
-int X, Y;
+long long X, Y;
 
-int binarySearch(int Z) {
-    int front = Y; int end = X; int mid = (front + end) / 2;
-    while(front+1 != end) {
-        if(mid*100/X != Z) return 1;
-        front = mid; mid = (front+end)/2;
+int getZ(long long x, long long y) {
+    return floor((double)y/(double)x*100);
+}
+
+int binarySearch(int target, long long start, long long end) {
+    // cout << start <<  "   " << end << endl;
+    if(end - start <= 1) return -1;
+    long long middle = (start+end)/2;
+    int Z = getZ(X+middle, Y+middle);
+    // cout << "middle : " << middle << "   binarySearch Z : " << Z << endl;
+    if(Z > target) return middle;
+    else if(Z == target) {
+        return binarySearch(target, middle, end);
+    } else {
+        return binarySearch(target, start, middle);
     }
-    return 0;
 }
 
 int main() {
     cin >> X >> Y;
-    int Z = Y*100/X;
-    int ZZ = Z;
-    cout << Z << endl;
-    // X = 53     Y = 47      Z = 88
-    int wins = 0;
+    int currentZ = getZ(X,Y);
     
-    
-    if(binarySearch(Z) == 0) {
-        cout << -1 << endl;
-        return 0;
+    long long ret = binarySearch(currentZ, 0, 1000000000-X);
+    // cout << ret << endl;
+    if(ret == -1) {
+        cout << -1; return 0;
     }
-
-    while(Z == ZZ) {
-        wins++;
-        Z = (Y+wins)*100/(X+wins);
+    long long limit = 1;
+    for(long long i = ret; i>=0; i--) {
+        if(getZ(X+i, Y+i) == currentZ) {
+            limit = i; break;
+        }
     }
-    cout << wins << endl;
+    cout << limit + 1;
 }

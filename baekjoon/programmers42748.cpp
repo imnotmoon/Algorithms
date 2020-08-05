@@ -18,11 +18,7 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands) {
         for(int j=start-1; j<end; j++) {
             newArray.push_back(array[j]);
         }
-        // for(int j=0; j<newArray.size(); j++) {
-        //     cout << newArray[j] << " " ;
-        // }
         sort(newArray.begin(), newArray.end());
-        // cout << "ans : " << newArray[idx-1] << endl;
         answer.push_back(newArray[idx-1]);
     }
     return answer;
