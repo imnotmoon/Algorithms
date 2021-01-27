@@ -1,6 +1,7 @@
 # baekjoon 1707
 from sys import stdin
 input = stdin.readline
+from collections import deque
 
 # 입력
 K = int(input())
@@ -19,11 +20,11 @@ for k in range(K):
 # BFS
 def bfs(i):     # i번 노드에 대해 탐색
     global color
-    queue = []
+    queue = deque()
     queue.append(i)
     color[i] = 0
     while(queue):
-        current = queue.pop(0)
+        current = queue.popleft()
         col = color[current]
         for node in edges[k][current]:
             if col == color[node]:
