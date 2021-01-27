@@ -4,36 +4,37 @@ input = stdin.readline
  
 n = int(input())
 arr = list(map(int, input().split()))
-result = [0 for _ in range(n)]
 ans, cnt = 0, 0
- 
+result = [0 for _ in range(n)]
+
 def merge(start, mid, end):
     global cnt, arr
-    l, r, s = start, mid+1, start
-    while(l<=r and r<=end):
-        if arr[l] <= arr[r]:
-            result[s] = arr[l]
-            l += 1
+    i, j, k = start, mid+1, start
+    while(i<=mid and j<=end):
+        if arr[i] <= arr[j]:
+            result[k] = arr[i]
+            i += 1
         else:
-            result[s] = arr[r]
-            r += 1
-            cnt = cnt + mid-l+1
-        s += 1
-        # 남은 데이터
-    if l > mid:
-        while(r <= end) : 
-            result[s] = arr[r]
-            s += 1
-            r += 1
+            result[k] = arr[j]
+            j += 1
+            cnt = cnt + mid-i+1
+        k += 1
+
+    # 남은 데이터
+    if i > mid:
+        while(j <= end) :
+            result[k] = arr[j]
+            k += 1
+            j += 1
     else:
-        while(l <= mid) : 
-            result[s] = arr[l]
-            s += 1
-            l += 1
+        while(i <= mid) : 
+            result[k] = arr[i]
+            k += 1
+            i += 1
  
     # 원래 배열로 이동
-    for i in range(start, end+1):
-        arr[i] = result[i]
+    for idx in range(start, end+1):
+        arr[idx] = result[idx]
  
 def mergeSort(start, end):
     if start < end:
