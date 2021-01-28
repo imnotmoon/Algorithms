@@ -19,8 +19,7 @@ def main() :
     infected[1] = True
 
     while queue :
-        current = queue[0]  # 큐의 맨 앞의 컴퓨터가 감염된거
-        queue.pop(0)
+        current = queue.pop(0)
         for com in network[current]:
             if infected[com]:   # 감염된 경우를 또 방문
                 continue
