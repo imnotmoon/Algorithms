@@ -3,7 +3,7 @@ from sys import stdin
 from collections import deque
 input = stdin.readline
 
-n, m = tuple(map(int, input().split()))
+n, m = tmap(int, input().split())
 maze = [] 
 for i in range(n):
     maze.append(input())
