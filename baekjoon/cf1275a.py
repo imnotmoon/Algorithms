@@ -1,4 +1,5 @@
 # codeforce 1275-A
+# https://codeforces.com/problemset/problem/1295/A
 
 t = int(input())
 segs = []
