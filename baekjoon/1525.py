@@ -1,4 +1,5 @@
 # 1525
+# dict를 사용한 visit체크와 2차원 배열의 string화
 
 import time
 import sys
