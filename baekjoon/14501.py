@@ -21,5 +21,4 @@ for i in range(n):
     for j in range(i + to, n):
         if t + timetable[j][1] > dp[j]:
             dp[j] = t + timetable[j][1]
-print(dp)
 print(max(dp))
