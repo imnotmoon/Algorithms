@@ -22,10 +22,18 @@ def function_S(a):
 
 def function_L(a):
     return (a % 1000) * 10 + (a // 1000)
+    # a = str(a)
+    # while len(a) < 4:
+    #     a = "0" + a
+    # return int(a[1:4] + a[0])
 
 
 def function_R(a):
     return ((a % 10) * 1000) + (a // 10)
+    # a = str(a)
+    # while len(a) < 4:
+    #     a = "0" + a
+    # return int(a[3] + a[0:3])
 
 
 def bfs(a, b):
