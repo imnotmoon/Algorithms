@@ -17,6 +17,6 @@ for i in range(1, n):
     else:
         dp[i] = arr[i]
 
-print(dp)
+# print(dp)
 
 print(max(dp))
