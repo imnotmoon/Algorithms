@@ -66,5 +66,6 @@
         "__tree": "cpp",
         "map": "cpp"
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "python.linting.enabled": false
 }
