@@ -8,8 +8,6 @@ house = []
 for i in range(n):
     house.append(list(map(int, input().split())))
 
-print(house)
-
 dp1, dp2, dp3 = [0 for _ in range(
     n+1)], [0 for _ in range(n+1)], [0 for _ in range(n+1)]
 dp1[1], dp2[1], dp3[1] = house[0][0], house[0][1], house[0][2]
