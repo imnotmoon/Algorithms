@@ -11,7 +11,4 @@ for i in range(1, k):
         else:
             dp[i][j] = sum(dp[i-1][:j+1]) % 1000000000
 
-for i in dp:
-    print(i)
-
 print(dp[k-1][n] % 1000000000)
