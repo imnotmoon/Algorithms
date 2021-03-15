@@ -1,4 +1,5 @@
 # baekjoon 12865
+# 2293과 유사
 n, k = map(int, input().split())
 weight, value = [], []
 for i in range(n):
