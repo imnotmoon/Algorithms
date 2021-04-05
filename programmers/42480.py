@@ -7,7 +7,6 @@ def solution(answers):
         for j in range(1, 4):
             if answers[i] == tester[j][i % len(tester[j])]:
                 total[j] += 1
-        print(total)
 
     max_score = max(total)
     answer = []
