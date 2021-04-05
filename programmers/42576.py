@@ -11,7 +11,6 @@ def solution(participant, completion):
             answer = i
         else:
             dic[i] -= 1
-    print(answer)
     return answer
 
 
