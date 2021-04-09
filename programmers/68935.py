@@ -10,10 +10,8 @@ def solution(n):
         text += str(div)
         n -= div*(3**i)
         i -= 1
-    print(text)
     for j in range(len(text)):
         answer += (3**j)*int(text[j])
-    print(answer)
     return answer
 
 
