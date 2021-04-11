@@ -9,7 +9,6 @@ def solution(n):
             if n // i not in div:
                 div.add(n//i)
                 answer += n//i
-    print(answer)
     return answer
 
 
