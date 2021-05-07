@@ -22,6 +22,7 @@ def solution(s):
         if count == 1:
             count = ''
         result += str(count) + tempStr
+        print(result)
         length.append(len(result))
         result = ""
 
@@ -29,8 +30,8 @@ def solution(s):
 
 
 
-solution("aabbaccc")
+# solution("aabbaccc")
 # solution("ababcdcdababcdcd")
 # solution("abcabcdede")
 # solution("abcabcabcabcdededededede")
-# solution("xababcdcdababcdcd")
+solution("xababcdcdababcdcd")
