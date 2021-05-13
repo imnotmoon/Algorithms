@@ -114,3 +114,5 @@ const loadItem = async (dir) => {
 	});
 	nodes[0].innerHTML = data;
 };
+
+// 50분 남음
