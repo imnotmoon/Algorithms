@@ -10,8 +10,8 @@ result = sum(cost)
 
 for i in range(1, n+1):
     for j in range(1, sum(cost)+1):
-        if cost[i-1] > j : dp[i][j] = dp[i-1][j]
-        else : dp[i][j] = max(dp[i-1][j], dp[i-1][j-cost[i-1]] + mem[i-1])
+        if cost[i-1] > j : dp[i][j] = dp[i-1][j]  #! 참고
+        else : dp[i][j] = max(dp[i-1][j], dp[i-1][j-cost[i-1]] + mem[i-1]) #! 참고
         if dp[i][j] >= m : result = min(result, j)
         
 print(result)
