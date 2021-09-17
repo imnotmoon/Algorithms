@@ -13,5 +13,8 @@ for i in range(1, n+1):
         if cost[i-1] > j : dp[i][j] = dp[i-1][j]  #! 참고
         else : dp[i][j] = max(dp[i-1][j], dp[i-1][j-cost[i-1]] + mem[i-1]) #! 참고
         if dp[i][j] >= m : result = min(result, j)
+
+for i in dp:
+    print(i)
         
 print(result)
