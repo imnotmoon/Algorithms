@@ -35,9 +35,6 @@ for key in likes.keys():
     y, x = seat(likes[key])
     seats[y][x] = key
 
-# for i in seats:
-#     print(i)
-
 satisifaction = 0
 for i in range(n):
     for j in range(n):
