@@ -5,9 +5,7 @@ input = sys.stdin.readline
 n = int(input())
 likes = dict()
 seats = [[0 for _ in range(n)] for _ in range(n)]
-
-dy = [0, 1, 0, -1]
-dx = [1, 0, -1, 0]
+dy, dx = [0, 1, 0, -1], [1, 0, -1, 0]
 
 for i in range(n**2):
     t = list(map(int, input().split()))
