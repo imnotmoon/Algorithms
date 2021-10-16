@@ -15,6 +15,4 @@ for req in requests:
   else :
     heapq.heappush(heap, req[0])
 
-for i in heap:
-  total += i
 print(sum(heap))
