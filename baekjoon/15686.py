@@ -12,13 +12,13 @@ for i in range(N):
     if city[i][j] == 2: chickens.append((i, j))
     if city[i][j] == 1: homes.append((i, j))
 
-to_close = list(combinations(chickens, M))
-result = [0] * len(to_close)
+picks = list(combinations(chickens, M))
+result = [0] * len(picks)
 
 for i in homes:
-  for j in range(len(to_close)):
+  for j in range(len(picks)):
     a = N+N
-    for k in to_close[j]:
+    for k in picks[j]:
       a = min(abs(i[0]-k[0]) + abs(i[1]-k[1]), a)  # 각 집에 대해 치킨집들을 순회 -> 가장 가까운 치킨집 구함
     result[j] += a
 
