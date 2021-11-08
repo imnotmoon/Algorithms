@@ -1,6 +1,5 @@
 # baekjoon 1991
 import sys
-import math
 input = sys.stdin.readline
 n, t = int(input()), dict()
 result = ''
