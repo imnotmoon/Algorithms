@@ -1,24 +1,33 @@
-# 18352
+# baekjoon 18352
 
-N, M, K, X = list(map(int, input().split()))
-paths = [list(map(int, input().split())) for _ in range(M)]
+import sys
+input = sys.stdin.readline
+INF = sys.maxsize
+import heapq
 
-queue = []
-visitWithPathK = [0 for _ in range(N+1)]
-queue.append(X)
-while(queue) :
-    if visitWithPathK[queue[0]] == K :
-        break
-    currentCity = queue.pop(0)
-    for path in paths :
-        if path[0] == currentCity and visitWithPathK[path[1]] == 0:
-            queue.append(path[1])
-            visitWithPathK[path[1]] = visitWithPathK[currentCity]+1
+N, M, K, X = map(int, input().split())
+graph = [ [] for _ in range(N+1) ]
+for i in range(M):
+    a, b = map(int, input().split())
+    graph[a].append((b, 1))
+dp = [ INF for _ in range(N+1) ]
+dp[X] = 0
+heap = [(0, X)]
 
-count = 0
-for i in range(N+1) :
-    if visitWithPathK[i] == K :
+while heap:
+    cw, c = heapq.heappop(heap)
+    if dp[c] < cw: continue
+    for next_node, w in graph[c]:
+        if dp[next_node] > cw + w:
+            dp[next_node] = cw + w
+            heapq.heappush(heap, (cw+w, next_node))
+
+result = []
+for i in range(len(dp)):
+    if dp[i] == K : result.append(i)
+
+if len(result) == 0: print(-1)
+else :
+    result.sort()
+    for i in result:
         print(i)
-        count += 1
-if count == 0 : 
-    print(-1)
