@@ -12,6 +12,5 @@ for t in range(T):
   for i in costs:
     for j in range(1, M+1):
       if j-i >= 0: dp[j] += dp[j-i]
-
   print(dp[-1])
 
