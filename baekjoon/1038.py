@@ -7,6 +7,7 @@ total = 9
 if N <= 9 : 
   print(q[N])
   exit(0)
+  
 while q:
   c = q.popleft()
   for i in range(0, 10):
