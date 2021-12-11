@@ -5,20 +5,18 @@ input = sys.stdin.readline
 
 N = int(input())
 links = [ list(map(int, input().split())) for _ in range(N) ]
+VISITED_ALL = (1 << N) - 1
 ans = sys.maxsize
-cost = 0
 
-def bt(visited):
-  global ans, cost
-  if len(visited) == N:
-    if links[visited[-1]][0] > 0:
-      ans = min(ans, cost + links[visited[-1]][0])
+def bt(start, last, visited, cost):
+  global ans
+  if visited == VISITED_ALL:
+    if links[last][start] > 0:
+      ans = min(ans, cost + links[last][start])
       return
-  for i in range(N):
-    if links[visited[-1]][i] > 0 and i not in visited:
-      cost += links[visited[-1]][i]
-      bt(visited + [i])
-      cost -= links[visited[-1]][i]
+  for city in range(N):
+    if links[last][city] > 0 and visited & (1 << city) == 0:
+      bt(start, city, visited | (1 << city), cost + links[last][city])
 
-bt([0])
+bt(1, 1, 1 << 1, 0)
 print(ans)
