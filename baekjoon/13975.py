@@ -3,9 +3,8 @@
 import sys, heapq
 input = sys.stdin.readline
 
-T = int(input())
-for t in range(T):
-  N = int(input())
+for _ in range(int(input())):
+  input()
   heap, result = [], 0
   for i in list(map(int, input().split())): heapq.heappush(heap, i)
   while len(heap) > 1:
