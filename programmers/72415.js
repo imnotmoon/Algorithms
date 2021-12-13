@@ -4,16 +4,13 @@ const [dy, dx] = [
 ];
 
 function solution(board, r, c) {
-	let answer = 0;
-
 	const remains = [];
 	for (let i = 0; i < 4; i++) {
 		for (let j = 0; j < 4; j++) {
 			if (board[i][j] > 0) remains.push([i, j, board[i][j]]);
 		}
 	}
-	answer = backtracking(r, c, remains);
-	return answer + remains.length;
+	return backtracking(r, c, remains) + remains.length;
 }
 
 function backtracking(curY, curX, remains) {
@@ -23,19 +20,17 @@ function backtracking(curY, curX, remains) {
 	remains.forEach(([y, x, i]) => (board[y][x] = i));
 
 	// 짝을 맞춰야 하는 경우
-	if (remains.filter(([y, x]) => y === curY && x === curX).length > 0) {
+	if (board[curY][curX] > 0) {
 		const currentCard = board[curY][curX];
 		const [targetY, targetX] = remains.filter(([y, x, n]) => n === currentCard && (y !== curY || x !== curX))[0];
-		const shortestPath = findPath(targetY, targetX, curY, curX, board);
 		const newRemains = remains.filter(([_, __, n]) => n !== currentCard);
-		min = Math.min(backtracking(targetY, targetX, newRemains) + shortestPath, min);
+		min = Math.min(backtracking(targetY, targetX, newRemains) + findPath(targetY, targetX, curY, curX, board), min);
 	}
 
 	// 새 카드 쌍을 찾아야 하는 경우
 	else {
 		remains.forEach(([y, x], idx) => {
-			const shortestPath = findPath(y, x, curY, curX, board);
-			min = Math.min(backtracking(y, x, remains) + shortestPath, min);
+			min = Math.min(backtracking(y, x, remains) + findPath(y, x, curY, curX, board), min);
 		});
 	}
 
@@ -59,9 +54,7 @@ function findPath(targetY, targetX, curY, curX, board) {
 		// 상하좌우 4방향
 		for (let i = 0; i < 4; i++) {
 			const [yy, xx] = [y + dy[i], x + dx[i]];
-			if (yy < 4 && yy >= 0 && xx < 4 && xx >= 0 && !visited[yy][xx]) {
-				queue.push([yy, xx, k + 1]);
-			}
+			if (yy < 4 && yy >= 0 && xx < 4 && xx >= 0 && !visited[yy][xx]) queue.push([yy, xx, k + 1]);
 		}
 
 		// ctrl 키를 누른 상태로 4방향
@@ -119,55 +112,3 @@ function findPath(targetY, targetX, curY, curX, board) {
 	}
 	return min;
 }
-
-// console.log(
-// 	solution(
-// 		[
-// 			[1, 0, 0, 2],
-// 			[3, 0, 0, 0],
-// 			[0, 0, 0, 3],
-// 			[2, 0, 1, 0],
-// 		],
-// 		1,
-// 		0
-// 	)
-// );
-
-console.log(
-	solution(
-		[
-			[1, 1, 2, 2],
-			[3, 3, 4, 4],
-			[5, 5, 6, 6],
-			[7, 7, 8, 8],
-		],
-		1,
-		0
-	)
-);
-
-// console.log(
-// 	solution(
-// 		[
-// 			[1, 0, 0, 3],
-// 			[2, 0, 0, 0],
-// 			[0, 0, 0, 2],
-// 			[3, 0, 1, 0],
-// 		],
-// 		1,
-// 		0
-// 	)
-// );
-
-// console.log(
-// 	solution(
-// 		[
-// 			[3, 0, 0, 2],
-// 			[0, 0, 1, 0],
-// 			[0, 1, 0, 0],
-// 			[2, 0, 0, 3],
-// 		],
-// 		0,
-// 		1
-// 	)
-// );
