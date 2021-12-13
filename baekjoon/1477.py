@@ -1,24 +1,19 @@
-# 왜 거리 내림차순으로 정렬해서 반씩 나누는건 안되지
+# baekjoon 1477
 
-import sys
-input = sys.stdin.readline
+N, M, L = map(int, input().split())
+h = [0] + sorted(list(map(int, input().split()))) + [L]
 
-n, m, l = map(int, input().split())
-h = sorted(list(map(int, input().split())))
-d = [h[0], l-h[-1]-1] + [h[i+1] - h[i] for i in range(len(h)-1)]
-
-left, right, mid = 0, l-1, (l-1)//2
-answer = 0
-while left <= right:
-    count = 0
-    for i in range(len(d)):
-        if mid < d[i] : count += (d[i]-1) // mid
-
-    if count > m:
-        left = mid+1
+start, end = 1, L
+while start <= end:
+    mid = (start + end) // 2
+    total = 0
+    for i in range(1, len(h)):
+        if h[i]-h[i-1] > mid:
+            total += (h[i]-h[i-1]-1) // mid
+    if total > M : 
+        start = mid+1
     else:
         answer = mid
-        right = mid-1
-    mid = (left+right)//2
+        end = mid-1
 
 print(answer)
