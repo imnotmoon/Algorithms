@@ -24,12 +24,9 @@ function solution(t) {
 			answer = path;
 			return;
 		}
-
 		if (!tickets[start]) return;
-
 		for (let i = 0; i < tickets[start].length; i++) {
 			const destination = tickets[start][i];
-
 			if (remain[start][destination]) {
 				remain[start][destination]--;
 				backtracking(destination, [...path, destination]);
